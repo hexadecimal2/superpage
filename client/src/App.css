@@ -1,0 +1,106 @@
+/* App.css */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4; /* Light background color */
+}
+
+.app {
+  display: flex; /* Use flex to align sidebar and main content */
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh; /* Full height */
+  background-color: #ffffff; /* White background */
+  border-right: 1px solid #e0e0e0; /* Light gray border */
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+.sidebar li:hover {
+  color: #a83eff; /* Link hover color */
+}
+
+.main-content {
+  flex: 1; /* Takes the remaining space */
+  padding: 20px;
+  background-color: #ffffff; /* White background */
+  border-radius: 8px;
+}
+
+.header {
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+.header p {
+  color: #555;
+}
+
+.chat {
+  margin-top: 20px;
+}
+
+.history {
+  background-color: #f9f9f9; /* Light gray for the history area */
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  padding-top: 5px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  display: flex; /* Use flex for input and button */
+  gap: 10px; /* Space between input and button */
+}
+
+.input-container input {
+  flex: 1; /* Take remaining space */
+  padding: 10px;
+  border: 1px solid #e0e0e0; /* Light gray border */
+  border-radius: 5px;
+}
+
+.input-container button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #a200ff; /* purple background */
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-container button:hover {
+  background-color: #9719ff; /* Darker purple on hover */
+}
+
+.footer {
+  margin-top: 20px;
+  text-align: center;
+  color: #555;
+}
+
+.user{
+  float:right;
+}
