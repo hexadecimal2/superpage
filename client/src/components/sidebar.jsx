@@ -1,20 +1,22 @@
-// Sidebar.js
-import React from 'react';
-
 const Sidebar = () => {
-    return (
+
+    return(
+        
         <div className="sidebar">
-            <h2>Superpage</h2>
-            <ul>
-                <li>AI Chat</li>
-                <li>Members</li>
-                <li>Integrations</li>
-                <li>Refer Friends</li>
-                <li>Pricing Plans</li>
-                <li>Settings</li>
-            </ul>
+
+        <h2> Superpage </h2>
+        <ul> AI Chat </ul>
+        <ul> Members </ul>
+        <ul> Integrations </ul>
+        <ul> Refer friends </ul>
+        <ul> Pricing Plans </ul>
+        <ul> Settings </ul>  
+         
+        
         </div>
     );
-};
+
+
+}
 
 export default Sidebar;

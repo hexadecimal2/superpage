@@ -1,106 +1,45 @@
-/* App.css */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4; /* Light background color */
-}
-
-.app {
-  display: flex; /* Use flex to align sidebar and main content */
-}
-
+/* Sidebar styling */
 .sidebar {
-  width: 250px;
-  height: 100vh; /* Full height */
-  background-color: #ffffff; /* White background */
-  border-right: 1px solid #e0e0e0; /* Light gray border */
-  padding: 20px;
+  height: 100vh; /* Sidebar takes up full viewport height */
 }
 
-.sidebar h2 {
-  margin-top: 0;
-  font-size: 20px;
-  color: #333;
+/* Login component */
+.loginComponent, .signUpComponent, .homeComponent {
+  display: grid;
+  grid-template-columns: 1fr 4fr; /* Keep sidebar and main content proportion */
 }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
+/* Home component specific fix */
+.homeComponent {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto; /* Allow rows to take up the necessary space */
 }
 
-.sidebar li {
-  margin: 15px 0;
-  cursor: pointer;
+/* Dashboard container */
+.dashboardContainer {
+  height: 100%; /* Ensure it fills the height of the parent */
 }
 
-.sidebar li:hover {
-  color: #a83eff; /* Link hover color */
-}
-
-.main-content {
-  flex: 1; /* Takes the remaining space */
-  padding: 20px;
-  background-color: #ffffff; /* White background */
-  border-radius: 8px;
-}
-
-.header {
-  margin-bottom: 30px;
-}
-
-.header h1 {
-  font-size: 24px;
-  color: #333;
-}
-
-.header p {
-  color: #555;
-}
-
-.chat {
+/* Input styling */
+input[type="text"] {
+  width: calc(100% - 20px); /* Adjust width slightly to fit inside container */
+  margin-left: 4px;
+  height: 50%; 
   margin-top: 20px;
+  padding-top: 2px;
 }
 
-.history {
-  background-color: #f9f9f9; /* Light gray for the history area */
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 20px;
-  padding-top: 5px;
-  margin-bottom: 20px;
+/* Header styling */
+header {
+  text-align: right;
+  margin-right: 10px;
 }
 
-.input-container {
-  display: flex; /* Use flex for input and button */
-  gap: 10px; /* Space between input and button */
+/* Content area adjustments */
+.contentArea {
+  display: grid;
+  grid-template-rows: 0.3fr 8fr 1fr; /* Adjust row heights as necessary */
+  height: 100vh; /* Ensure content area spans the full viewport height */
 }
 
-.input-container input {
-  flex: 1; /* Take remaining space */
-  padding: 10px;
-  border: 1px solid #e0e0e0; /* Light gray border */
-  border-radius: 5px;
-}
-
-.input-container button {
-  padding: 10px 15px;
-  border: none;
-  background-color: #a200ff; /* purple background */
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.input-container button:hover {
-  background-color: #9719ff; /* Darker purple on hover */
-}
-
-.footer {
-  margin-top: 20px;
-  text-align: center;
-  color: #555;
-}
-
-.user{
-  float:right;
-}

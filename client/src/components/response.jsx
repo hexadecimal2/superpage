@@ -1,11 +1,16 @@
 const Response = () => {
-    return(
-    <>
+
+return(
+<>
+
+<div className="responseComponent">
     
-    Response
-    
-    </>
-    );
+</div>
+
+</>
+
+)
+
 }
 
-export default Response
+export default Response;
