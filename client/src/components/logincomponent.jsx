@@ -5,13 +5,49 @@ const LoginComponent = () => {
     const navigate = useNavigate();
 
 
- return(
+    const handleClick = () => {
+
+        const email = document.getElementById('loginEmailId').value;
+        const password = document.getElementById('loginPasswordId').value;
+        
+ 
+         const requestOptions = {
+             method : "POST",
+             headers: {"Content-Type" : "application/json"},
+             credentials: 'include',
+             body: JSON.stringify(
+             {
+                 //what we're sending goes here
+                 Email : email,
+                 Password : password
+ 
+             })
+         }
+   
+        fetch('http://localhost:5000/getuser', requestOptions).then((response) => response.json()).then((data) =>  {
+        if (data.message === 'nopassword'){
+         alert('Please insert a password / valid email');
+        }
+ 
+        if (data.message === 'passwordnotvalid'){
+         alert('Email / Password Incorrect')
+        }
+ 
+        if (data.message === 'passwordvalid'){
+         alert('Success!');
+         navigate('/home');
+        }
+ 
+        });
+
+
+    }
+
+    return(
 
    
 
     <div className="login">
-
-        <form>
             
             <h1> Login </h1>
             
@@ -23,9 +59,8 @@ const LoginComponent = () => {
         
             <p onClick={() => {navigate('/signup')}}> Dont have an account? Create one here </p>
                 
-            <button onClick={ () => {navigate('/home')}}>Login</button>
-        
-        </form>
+            <button onClick={ () => handleClick()}>Login</button>
+
 
     </div>
 
