@@ -1,9 +1,19 @@
+import { useNavigate } from "react-router-dom";
+
 const ChatComponent = () => {
+
+const navigate = useNavigate();
 
 const handleKeyPress = (e) => {
 
 
     const question = document.getElementById('questionBox').value;
+
+    if (question === ''){
+        alert('Please fill in a question')
+    }
+    else{
+
 
     if (e.key === 'Enter'){
         
@@ -25,13 +35,13 @@ const handleKeyPress = (e) => {
             response.json()
         ).then((data) => {
 
-            console.log(data);
-
+            navigate('/home', {state : {Data : data, Question : question }})
+            document.getElementById('questionBox').value = '';
         })
         
         
     }
-
+    }
 }
 
 

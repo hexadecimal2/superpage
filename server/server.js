@@ -53,7 +53,8 @@ app.post('/add', async (req, res) => {
       await pool.query(`INSERT INTO users (name) VALUES ('${data.Name}')`)
       const id = await pool.query(`SELECT * FROM users WHERE userID = (SELECT max(userID) FROM users);`);
       await pool.query(`INSERT INTO user_data (userID, email, password) VALUES (${id[0][0].userID}, '${data.Email}', '${hash}');`)
-       
+    
+
       //const msg = await bcrypt.compare(data.Password, hash);
       //console.log(msg);
    
@@ -76,11 +77,16 @@ app.post('/getuser', async (req, res) => {
     
     if (confirm) {
          const id = await pool.query(`SELECT userID FROM user_data WHERE email = '${data.Email}'`); 
-         const token = jwt.sign({id : id}, process.env.JWT_SECRET, {expiresIn : "1h"});
-         
+         const name = await pool.query(`SELECT name FROM users WHERE userID = ${id[0][0].userID}`);
+
+         console.log(id[0][0].userID);
+         const token = jwt.sign({ID : id[0][0].userID}, process.env.JWT_SECRET, {expiresIn : "1h"});
+         const responses = await pool.query(`SELECT question, response FROM prompts WHERE userID = ${id[0][0].userID};`)
          res.cookie("token", token, {httpOnly : true})
          
-         return res.send({message : 'passwordvalid', data : id})
+        console.log(name);
+
+         return res.send({message : 'passwordvalid', ID : id, Responses : responses[0], Name : name[0][0].name})
     } else {
          return res.send({message : 'passwordnotvalid'})
     }
@@ -122,12 +128,17 @@ app.post('/getuser', async (req, res) => {
         const response = await result.response;
         const text = response.text();
 
-        console.log(text);
+
+        await pool.query(`INSERT INTO prompts (userID, question, response) VALUES (${data.ID}, '${question}', '${text}');`);
+        
 
 
-        return res.send({message : 'success', Response : 'hi' });}
+        const name = await pool.query(`SELECT name FROM users WHERE userID = ${data.ID}`); 
+        
+        return res.send({message : 'question_sent', Response : text, Name : name[0][0].name});}
     else{
         return res.send({message : 'failed to verify token!'});
+        
     }
 
     

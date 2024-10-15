@@ -1,8 +1,9 @@
-const Header = () => {
+const Header = (props) => {
 
 return(
 
-    <header> User's name goes here </header>
+
+    <header> {props.name} </header>
 
 );
 

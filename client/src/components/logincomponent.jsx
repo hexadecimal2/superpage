@@ -35,7 +35,9 @@ const LoginComponent = () => {
  
         if (data.message === 'passwordvalid'){
          alert('Success!');
-         navigate('/home');
+         alert(data);
+         
+         navigate('/home', {state : {Responses : data.Responses, Name : data.Name}});
         }
  
         });

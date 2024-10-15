@@ -1,11 +1,10 @@
-const DashboardMessage = () => {
+const DashboardMessage = (props) => {
 
 return(
     <>
-    
-    <div className="dashboardMessage">
-        
-    </div>
+
+       <h2>{props.question}</h2>
+       <h3> {props.response} </h3>
     
     </>
 )

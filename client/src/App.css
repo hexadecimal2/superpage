@@ -76,6 +76,7 @@ header {
   text-align: right;
   margin-right: 10px;
   margin-top: 10px;
+  border: 1px solid yellow;
 }
 
 /* Content area adjustments */
@@ -87,4 +88,14 @@ header {
 
 h2{
   margin-left: 20px;
+}
+
+.dashboardMessage {
+  border: 1px solid red;
+}
+
+.dashboardContainer{
+  border: 1px solid green;
+  margin-top: 100px;
+  margin-right: 100px;  
 }
