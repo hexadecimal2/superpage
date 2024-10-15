@@ -21,7 +21,7 @@ const SignUpComponent = () => {
                 
                 <br /><br />
 
-                <input className="signUpPassword" type="text" name="signUpPassword" id="signUpPasswordId" placeholder="Password"/>
+                <input type="password" name="signUpPassword" id="signUpPasswordId" placeholder="Password"/>
                 
                 <p onClick={() => {navigate('/login')}}> Already have an account? Log in here </p>
                 

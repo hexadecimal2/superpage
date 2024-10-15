@@ -19,7 +19,7 @@ const LoginComponent = () => {
             
             <br /><br />
             
-            <input className="loginPassword" type="text" name="loginPassword" id="loginPasswordId" placeholder="Password"/>
+            <input className="loginPassword" type="password" name="loginPassword" id="loginPasswordId" placeholder="Password"/>
         
             <p onClick={() => {navigate('/signup')}}> Dont have an account? Create one here </p>
                 

@@ -9,6 +9,43 @@
   grid-template-columns: 1fr 4fr; /* Keep sidebar and main content proportion */
 }
 
+.login {
+  
+  text-align: center;
+
+}
+
+.login input[type=text], input[type=password]{
+
+  width: 50vh;
+  height: 3vh;
+  margin-top: 20px;
+}
+
+.login button{
+  width: 100px;
+  height: 40px;
+}
+
+.signup{
+  
+  text-align: center;
+
+}
+
+.signup input[type=text], input[type=password]{
+
+  width: 50vh;
+  height: 3vh;
+  margin-top: 20px;
+}
+
+.signup button{
+  width: 100px;
+  height: 40px;
+}
+
+
 /* Home component specific fix */
 .homeComponent {
   display: grid;
@@ -22,18 +59,23 @@
 }
 
 /* Input styling */
-input[type="text"] {
+.contentArea input[type="text"] {
   width: calc(100% - 20px); /* Adjust width slightly to fit inside container */
   margin-left: 4px;
   height: 50%; 
   margin-top: 20px;
+  margin-left: 0px;
   padding-top: 2px;
+  padding-left: 5px;
+
+
 }
 
 /* Header styling */
 header {
   text-align: right;
   margin-right: 10px;
+  margin-top: 10px;
 }
 
 /* Content area adjustments */
@@ -43,3 +85,6 @@ header {
   height: 100vh; /* Ensure content area spans the full viewport height */
 }
 
+h2{
+  margin-left: 20px;
+}
