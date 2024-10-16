@@ -24,7 +24,7 @@ const pool = mysql.createPool({
 }).promise();
 
 app.use(cookieParser());
-app.use(cors({origin: 'https://singular-buttercream-c6141b.netlify.app', credentials: true}));
+app.use(cors({origin: 'https://singular-buttercream-c6141b.netlify.app/', credentials: true}));
 app.use(express.json());
 
 
@@ -68,13 +68,15 @@ app.post('/getuser', async (req, res) => {
     const data = req.body;
     const password = await pool.query(`SELECT password FROM user_data WHERE email = '${data.Email}'`) 
  
-    console.log(password)
+    console.log(password);
  
-    if (data.Password == '') {
+    if (data.Password == '' || password[0][0] === undefined ) {
      return res.send({message : 'nopassword'});
     } 
     else {
     
+    
+
     const confirm = await bcrypt.compare(data.Password, password[0][0].password)
     
     if (confirm) {
@@ -174,8 +176,7 @@ app.post('/getresponses', async (req, res) => {
         const name = await pool.query(`SELECT name FROM users WHERE userID = ${data.ID}`);
         const responses = await pool.query(`SELECT question, response FROM prompts WHERE userID = ${data.ID};`)
         return res.send({message : 'showmessages', ID : data.ID, Responses : responses[0], Name : name[0][0].name})
-    }
-    
+    } 
     else{
         return res.send({message : 'failed to verify token'});
     }
