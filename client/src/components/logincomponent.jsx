@@ -17,7 +17,7 @@ const LoginComponent = () => {
       }),
     };
 
-    fetch('http://localhost:5000/getuser', requestOptions)
+    fetch('https://superpage.onrender.com/getuser', requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.message === 'nopassword') {

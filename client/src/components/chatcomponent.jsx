@@ -29,7 +29,7 @@ const handleKeyPress = (e) => {
             
         }
 
-        fetch('http://localhost:5000/question', requestOptions).then((response) => 
+        fetch('https://superpage.onrender.com/question', requestOptions).then((response) => 
             response.json()
         ).then((data) => {
 
@@ -51,7 +51,6 @@ return (
         type="text"
         placeholder="Ask your question here..."
       />
-      {/* You can add a send button here */}
     </div>
   );
   

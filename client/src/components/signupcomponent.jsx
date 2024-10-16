@@ -18,7 +18,7 @@ const SignUpComponent = () => {
             })
         };
 
-        fetch('http://localhost:5000/add', requestOptions)
+        fetch('https://superpage.onrender.com/add', requestOptions)
             .then((response) => response.json())
             .then((data) => {
                 if (data.message === 'success') {
