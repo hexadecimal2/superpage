@@ -45,7 +45,7 @@ useEffect(() => {
          navigate('/home', {state : {Responses : data.Responses, Name : data.Name}});
         });
 
-}, [])
+}, [navigate])
 
 if (Object.hasOwn(location.state, 'Data')){
 return(
