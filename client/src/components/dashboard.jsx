@@ -23,7 +23,7 @@ const handleClick = (index) => {
         
     }
 
-    fetch('https://superpage.onrender.com/getresponse', requestOptions).then((response) => 
+    fetch('http://localhost:5000/getresponse', requestOptions).then((response) => 
         response.json()
     ).then((data) => {
         console.log(data);
@@ -41,7 +41,7 @@ useEffect(() => {
     }
     
     
-    fetch('https://superpage.onrender.com/getresponses', requestOptions).then((response) => response.json()).then((data) =>  {
+    fetch('http://localhost:5000/getresponses', requestOptions).then((response) => response.json()).then((data) =>  {
          navigate('/home', {state : {Responses : data.Responses, Name : data.Name}});
         });
 
