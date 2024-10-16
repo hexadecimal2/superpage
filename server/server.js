@@ -24,11 +24,6 @@ const pool = mysql.createPool({
 }).promise();
 
 app.use(cookieParser());
-app.use(function (req, res, next) {
-   res.header("Access-Control-Allow-Origin", "*");
-   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-   next();
-});
 app.use(cors({origin: 'https://singular-buttercream-c6141b.netlify.app', credentials: true}));
 app.use(express.json());
 
@@ -87,7 +82,7 @@ app.post('/getuser', async (req, res) => {
          const name = await pool.query(`SELECT name FROM users WHERE userID = ${id[0][0].userID}`);
          const token = jwt.sign({ID : id[0][0].userID}, process.env.JWT_SECRET, {expiresIn : "1h"});
          const responses = await pool.query(`SELECT question, response FROM prompts WHERE userID = ${id[0][0].userID};`)
-         res.cookie("token", token, {httpOnly : true})
+         res.cookie("token", token);//{httpOnly : true})
     
 
          return res.send({message : 'passwordvalid', ID : id, Responses : responses[0], Name : name[0][0].name})
@@ -96,8 +91,7 @@ app.post('/getuser', async (req, res) => {
     }
  
  
- 
- 
+
  }
  
  })
