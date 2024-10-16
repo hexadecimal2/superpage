@@ -68,10 +68,12 @@ app.post('/getuser', async (req, res) => {
     const data = req.body;
     const password = await pool.query(`SELECT password FROM user_data WHERE email = '${data.Email}'`) 
  
+    console.log(password)
  
     if (data.Password == '') {
      return res.send({message : 'nopassword'});
-    } else {
+    } 
+    else {
     
     const confirm = await bcrypt.compare(data.Password, password[0][0].password)
     
