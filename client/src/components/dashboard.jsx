@@ -1,16 +1,53 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import DashboardMessage from "./dashboardmessage";
 import Response from "./response";
 import Header from "./header";
+import { useEffect } from "react";
 
 const Dashboard = (props) => {
 
 const location = useLocation();
-console.log(location.state)
+const navigate = useNavigate();
 
+const handleClick = (index) => {
+    
+    const requestOptions = {
+        method : "POST",
+        headers: {"Content-Type" : "application/json"},
+        body : JSON.stringify(
+            {
+               ID : index 
+            }
+        ),
+        credentials : 'include'
+        
+    }
+
+    fetch('http://localhost:5000/getresponse', requestOptions).then((response) => 
+        response.json()
+    ).then((data) => {
+        console.log(data);
+        navigate('/home', {state : {Data : {Response : data.Response, Name : data.Name}, Question : data.Question}})
+    })
+}
+
+useEffect(() => {
+    
+    
+    const requestOptions = {
+        method : "POST",
+        headers: {"Content-Type" : "application/json"},
+        credentials: 'include',
+    }
+    
+    
+    fetch('http://localhost:5000/getresponses', requestOptions).then((response) => response.json()).then((data) =>  {
+         navigate('/home', {state : {Responses : data.Responses, Name : data.Name}});
+        });
+
+}, [])
 
 if (Object.hasOwn(location.state, 'Data')){
-    console.log(location.state)
 return(
 <>
 
@@ -24,7 +61,7 @@ return(
 <div className="dashboardContainer">
 <Header name={location.state.Name}/>
 {location.state.Responses.map((prompt, index) => (
-    <div key={index} className='dashboardComponent'>
+    <div key={index} onClick={() => handleClick(index)} className='dashboardComponent'>
         <DashboardMessage question={prompt.question} response={prompt.response}/>
     </div>
 ))}

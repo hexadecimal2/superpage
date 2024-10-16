@@ -78,13 +78,10 @@ app.post('/getuser', async (req, res) => {
     if (confirm) {
          const id = await pool.query(`SELECT userID FROM user_data WHERE email = '${data.Email}'`); 
          const name = await pool.query(`SELECT name FROM users WHERE userID = ${id[0][0].userID}`);
-
-         console.log(id[0][0].userID);
          const token = jwt.sign({ID : id[0][0].userID}, process.env.JWT_SECRET, {expiresIn : "1h"});
          const responses = await pool.query(`SELECT question, response FROM prompts WHERE userID = ${id[0][0].userID};`)
          res.cookie("token", token, {httpOnly : true})
-         
-        console.log(name);
+    
 
          return res.send({message : 'passwordvalid', ID : id, Responses : responses[0], Name : name[0][0].name})
     } else {
@@ -130,9 +127,7 @@ app.post('/getuser', async (req, res) => {
 
 
         await pool.query(`INSERT INTO prompts (userID, question, response) VALUES (${data.ID}, '${question}', '${text}');`);
-        
-
-
+    
         const name = await pool.query(`SELECT name FROM users WHERE userID = ${data.ID}`); 
         
         return res.send({message : 'question_sent', Response : text, Name : name[0][0].name});}
@@ -144,7 +139,48 @@ app.post('/getuser', async (req, res) => {
     
 })
 
+app.post('/getresponse', async (req, res) => {
 
+    const token =  req.cookies.token;
+    const data = jwt.verify(token, process.env.JWT_SECRET)
+    
+    if (data !== undefined){
+        const id = req.body.ID + 1
+
+        const promptdata = await pool.query(`SELECT question, response FROM prompts WHERE promptID = ${id}`)
+        
+        const name = await pool.query(`SELECT name FROM users WHERE userID = ${data.ID}`);
+        
+        return res.send({message : 'response_gotten', Response : promptdata[0][0].response, Name : name[0][0].name, Question : promptdata[0][0].question})
+    
+    }
+    
+    else{
+        return res.send({message : 'failed to verify token'});
+    }
+
+
+});
+
+app.post('/getresponses', async (req, res) => {
+
+
+    const token =  req.cookies.token;
+    const data = jwt.verify(token, process.env.JWT_SECRET)
+    
+    if (data !== undefined){
+
+        const name = await pool.query(`SELECT name FROM users WHERE userID = ${data.ID}`);
+        const responses = await pool.query(`SELECT question, response FROM prompts WHERE userID = ${data.ID};`)
+        return res.send({message : 'showmessages', ID : data.ID, Responses : responses[0], Name : name[0][0].name})
+    }
+    
+    else{
+        return res.send({message : 'failed to verify token'});
+    }
+
+
+});
 
 
 app.listen(5000, () => {

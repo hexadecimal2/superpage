@@ -29,8 +29,6 @@ const handleKeyPress = (e) => {
             
         }
 
-        console.log(requestOptions)
-
         fetch('http://localhost:5000/question', requestOptions).then((response) => 
             response.json()
         ).then((data) => {
