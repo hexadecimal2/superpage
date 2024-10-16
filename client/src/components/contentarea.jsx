@@ -15,7 +15,7 @@ const ContentArea = (props) => {
         if (Object.hasOwn(location.state, 'Data')){
         setShowResponse(true);
         } else {
-            setShowResponse(false);
+        setShowResponse(false);
         }
     
     } , [location.state])

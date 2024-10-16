@@ -43,14 +43,18 @@ const handleKeyPress = (e) => {
 }
 
 
-return(
-
+return (
     <div className="chatComponent">
-    <input id="questionBox" onKeyUp={(e) => handleKeyPress(e)}  type="text" placeholder="chatbox"/>
-    {/* send button symbol thingy goes here*/}
-    
+      <input
+        id="questionBox"
+        onKeyUp={(e) => handleKeyPress(e)}
+        type="text"
+        placeholder="Ask your question here..."
+      />
+      {/* You can add a send button here */}
     </div>
-)
+  );
+  
 
 }
 

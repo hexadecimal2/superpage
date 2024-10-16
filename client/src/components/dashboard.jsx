@@ -4,7 +4,7 @@ import Response from "./response";
 import Header from "./header";
 import { useEffect } from "react";
 
-const Dashboard = (props) => {
+const Dashboard = () => {
 
 const location = useLocation();
 const navigate = useNavigate();
@@ -57,17 +57,21 @@ return(
 )
 } 
 else {   
-return(
-<div className="dashboardContainer">
-<Header name={location.state.Name}/>
-{location.state.Responses.map((prompt, index) => (
-    <div key={index} onClick={() => handleClick(index)} className='dashboardComponent'>
-        <DashboardMessage question={prompt.question} response={prompt.response}/>
-    </div>
-))}
-</div>
-
-)
+    return (
+        <div className="dashboardContainer">
+          <Header name={location.state.Name} />
+          {location.state.Responses.map((prompt, index) => (
+            <div
+              key={index}
+              onClick={() => handleClick(index)}
+              className="dashboardComponent"
+            >
+              <DashboardMessage question={prompt.question} response={prompt.response} />
+            </div>
+          ))}
+        </div>
+      );
+      
 
 }}
 

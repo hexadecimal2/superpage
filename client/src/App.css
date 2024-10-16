@@ -1,101 +1,363 @@
-/* Sidebar styling */
-.sidebar {
-  height: 100vh; /* Sidebar takes up full viewport height */
-}
-
-/* Login component */
-.loginComponent, .signUpComponent, .homeComponent {
-  display: grid;
-  grid-template-columns: 1fr 4fr; /* Keep sidebar and main content proportion */
-}
-
-.login {
-  
-  text-align: center;
-
-}
-
-.login input[type=text], input[type=password]{
-
-  width: 50vh;
-  height: 3vh;
-  margin-top: 20px;
-}
-
-.login button{
-  width: 100px;
-  height: 40px;
-}
-
-.signup{
-  
-  text-align: center;
-
-}
-
-.signup input[type=text], input[type=password]{
-
-  width: 50vh;
-  height: 3vh;
-  margin-top: 20px;
-}
-
-.signup button{
-  width: 100px;
-  height: 40px;
-}
-
-
-/* Home component specific fix */
-.homeComponent {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-template-rows: auto; /* Allow rows to take up the necessary space */
-}
-
-/* Dashboard container */
+/* Dashboard Container */
 .dashboardContainer {
-  height: 100%; /* Ensure it fills the height of the parent */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background-color: #f8f8f8;
 }
 
-/* Input styling */
-.contentArea input[type="text"] {
-  width: calc(100% - 20px); /* Adjust width slightly to fit inside container */
-  margin-left: 4px;
-  height: 50%; 
+.dashboardComponent {
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dashboardComponent:hover {
+  background-color: #f0f0f0;
+}
+
+.chatComponent {
   margin-top: 20px;
-  margin-left: 0px;
-  padding-top: 2px;
-  padding-left: 5px;
-
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }
 
-/* Header styling */
-header {
-  text-align: right;
-  margin-right: 10px;
-  margin-top: 10px;
-  border: 1px solid yellow;
+#questionBox {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #d0d0d0;
+  font-size: 16px;
 }
 
-/* Content area adjustments */
+.responseComponent {
+  padding: 20px;
+  margin: 10px 0;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.responseComponent h4 {
+  font-size: 18px;
+  color: #555;
+}
+
+.responseComponent h2 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Home Component */
+.homeComponent {
+  display: flex;
+  height: 100vh;
+}
+
 .contentArea {
-  display: grid;
-  grid-template-rows: 0.3fr 8fr 1fr; /* Adjust row heights as necessary */
-  height: 100vh; /* Ensure content area spans the full viewport height */
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+  overflow-y: auto;
 }
 
-h2{
-  margin-left: 20px;
+/* Sidebar Container */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #ffffff;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.dashboardMessage {
-  border: 1px solid red;
+header{
+  text-align: right;
+  margin-right: 20px;
 }
 
-.dashboardContainer{
-  border: 1px solid green;
-  margin-top: 100px;
-  margin-right: 100px;  
+/* Sidebar Header */
+.sidebar h2 {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #6a0dad; /* Purple Color */
+  font-weight: bold;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+/* Sidebar List Items */
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  font-size: 16px;
+  cursor: pointer;
+  color: #6a0dad; /* Purple Color */
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Icon Styling */
+.sidebar li svg {
+  color: #9b59b6; /* Lighter Purple Color */
+  font-size: 18px;
+}
+
+.sidebar li span {
+  flex-grow: 1;
+}
+
+/* Active State for the Selected Item */
+.sidebar li.active {
+  background-color: #dcdcdc; /* Light grey for active item */
+  font-weight: bold;
+}
+
+/* Main Login Component Styling */
+.loginComponent {
+  display: flex;
+  height: 100vh; /* Ensure it takes full screen height */
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 40px;
+  width: 400px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-box h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #6a0dad; /* Purple Color */
+}
+
+.input-box {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-box input:focus {
+  border-color: #6a0dad; /* Purple Color */
+}
+
+.signup-link {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #6a0dad; /* Purple Color */
+  cursor: pointer;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+.submit-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  background-color: #6a0dad; /* Purple Color */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #5e2a9d; /* Darker shade of Purple on hover */
+}
+
+/* Styles for the Signup Page */
+.signUpComponent {
+  display: flex; /* Aligns sidebar and component horizontally */
+  height: 100vh; /* Full height for the page */
+}
+
+/* Styles for the signup box */
+.signup-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 40px;
+  width: 400px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Title styling */
+.signup-box h1 {
+  margin-bottom: 20px; /* Spacing below the title */
+  font-size: 28px; /* Title size */
+  color: #6a0dad; /* Purple Color */
+}
+
+/* Input field styling */
+.input-box {
+  margin-bottom: 20px; /* Space between inputs */
+  width: 100%; /* Full width */
+}
+
+.input-box input {
+  width: 100%; /* Full width of input */
+  padding: 10px; /* Padding for input */
+  font-size: 16px; /* Font size */
+  border: 1px solid #ccc; /* Border color */
+  border-radius: 5px; /* Rounded input */
+  outline: none; /* Remove outline */
+  transition: border-color 0.3s; /* Transition effect */
+}
+
+/* Input focus effect */
+.input-box input:focus {
+  border-color: #6a0dad; /* Purple Color */
+}
+
+/* Link styling */
+.login-link {
+  margin-top: 10px; /* Spacing above link */
+  font-size: 14px; /* Link font size */
+  color: #6a0dad; /* Purple Color */
+  cursor: pointer; /* Pointer on hover */
+}
+
+/* Link hover effect */
+.login-link:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Submit button styling */
+.submit-btn {
+  margin-top: 20px; /* Space above button */
+  width: 100%; /* Full width button */
+  padding: 10px; /* Button padding */
+  background-color: #6a0dad; /* Purple Color */
+  color: #fff; /* Text color */
+  border: none; /* No border */
+  border-radius: 6px; /* Rounded button */
+  font-size: 16px; /* Button text size */
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s; /* Button hover effect */
+}
+
+/* Button hover effect */
+.submit-btn:hover {
+  background-color: #5e2a9d; /* Darker shade on hover */
+}
+
+/* Response Component Styles */
+.responseComponent {
+  padding: 20px; /* Space around the component */
+  margin: 15px 0; /* Margin to separate responses */
+  background-color: #f1f1f1; /* Light grey background */
+  border-left: 5px solid #6a0dad; /* Purple left border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+
+/* Hover Effect */
+.responseComponent:hover {
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+/* Question styling */
+.responseComponent h4 {
+  font-size: 18px; /* Font size for question */
+  color: #6a0dad; /* Purple color for question */
+  margin-bottom: 10px; /* Space below the question */
+}
+
+/* Answer styling */
+.responseComponent h2 {
+  font-size: 24px; /* Font size for answer */
+  color: #333; /* Darker text color for answer */
+  font-weight: bold; /* Bold text for emphasis */
+  line-height: 1.4; /* Line height for better readability */
+}
+
+/* Dashboard Message Component Styles */
+.dashboardMessageComponent {
+  padding: 20px; /* Space around the component */
+  margin: 15px 0; /* Margin to separate messages */
+  background-color: #fff; /* White background for contrast */
+  border-left: 5px solid #6a0dad; /* Purple left border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+
+/* Hover Effect */
+.dashboardMessageComponent:hover {
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+/* Question styling */
+.dashboardQuestion {
+  font-size: 20px; /* Font size for question */
+  color: #6a0dad; /* Purple color for question */
+  margin-bottom: 10px; /* Space below the question */
+}
+
+/* Response styling */
+.dashboardResponse {
+  font-size: 18px; /* Font size for response */
+  color: #333; /* Darker text color for response */
+  font-weight: normal; /* Regular weight for response */
+  line-height: 1.4; /* Line height for better readability */
 }
