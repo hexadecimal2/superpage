@@ -24,7 +24,7 @@ const pool = mysql.createPool({
 }).promise();
 
 app.use(cookieParser());
-app.use(cors({origin: 'https://singular-buttercream-c6141b.netlify.app/login', credentials: true}));
+app.use(cors({origin: 'https://singular-buttercream-c6141b.netlify.app', credentials: true}));
 app.use(express.json());
 
 
